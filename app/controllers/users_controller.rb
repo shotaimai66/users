@@ -1,18 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  # GET /users
-  # GET /users.json
+  
   def index
-    @users = User.all
-    # @users = User.where(age: 20)
-    # @users = User.where(age: [20, 21, 22, 23, 24])
-    # @users = User.where('id < ?', 3)
-    # @users = User.where('age <= ? and sex = ?', 20, 'male')
-    # @users = User.where.not(age: 20)
-    # @users = User.where.not(age: [20, 21, 22, 23, 24])
-    # @users = User.where.not('id < ?', 3)
-    # @users = User.where.not('age <= ? and sex = ?', 20, 'male')
+    # @users = User.all
+    @users = User.all.page(params[:page]).per(3)
+    
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render :json => @users }
+      format.xml  { render :xml => @users }
+    end
+    
   end
 
   # GET /users/1

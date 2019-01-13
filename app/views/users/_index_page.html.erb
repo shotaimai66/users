@@ -1,5 +1,4 @@
-<div id="pagenate">
-  <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
   
   <h1>Users</h1>
   <h3>ユーザー数：<%= @users.size %></h3>
@@ -31,5 +30,3 @@
   </table>
   <%= paginate @users, remote: true %>
   <br>
-</div>
-<%= link_to 'New User', new_user_path %>
